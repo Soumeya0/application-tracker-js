@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application Tracker</title>
+  <meta name="description" content="Track internship and job applications, deadlines and follow-ups in one place.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <div>
+        <h1>Application Tracker</h1>
+        <p class="tagline">Every application, deadline and follow-up in one place.</p>
+      </div>
+      <div class="header-actions" id="header-actions" hidden>
+        <span class="mode-badge" id="mode-badge"></span>
+        <button type="button" class="btn btn-quiet" id="reset-demo" hidden>Reset demo data</button>
+        <button type="button" class="btn btn-quiet" id="sign-out">Leave</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" tabindex="-1">
+    <p id="live-status" class="sr-only" role="status" aria-live="polite"></p>
+    <p id="banner" class="banner" role="alert" hidden></p>
+
+    <!-- Login / welcome -->
+    <section id="login-view" class="card login-card" aria-labelledby="login-title">
+      <h2 id="login-title">Welcome</h2>
+      <p class="muted">Sign in to see your saved applications, or try the demo with sample data. Demo changes stay in your browser and never leave your device.</p>
+
+      <form id="login-form" novalidate>
+        <label for="password">Owner password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p class="field-error" id="login-error" role="alert" hidden></p>
+        <div class="button-row">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="button" class="btn" id="try-demo">Try the demo</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- App -->
+    <div id="app-view" hidden>
+      <section aria-labelledby="stats-title">
+        <h2 id="stats-title" class="sr-only">Summary</h2>
+        <div class="stats" id="stats"></div>
+        <div class="breakdown" id="breakdown"></div>
+      </section>
+
+      <section aria-labelledby="table-title">
+        <div class="toolbar">
+          <h2 id="table-title">Applications</h2>
+          <div class="toolbar-controls">
+            <label class="sr-only" for="search">Search applications</label>
+            <input id="search" type="search" placeholder="Search company, role or notes">
+            <label class="sr-only" for="status-filter">Filter by status</label>
+            <select id="status-filter"></select>
+            <button type="button" class="btn btn-primary" id="add-btn">Add application</button>
+          </div>
+        </div>
+
+        <div class="table-scroll" role="region" aria-labelledby="table-title" tabindex="0">
+          <table id="table">
+            <thead id="thead"></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <p id="empty" class="empty" hidden></p>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="form-dialog" aria-labelledby="dialog-title">
+    <form id="app-form" novalidate>
+      <h2 id="dialog-title">Add application</h2>
+      <p class="field-error" id="form-error" role="alert" hidden></p>
+      <div class="form-grid" id="form-grid"></div>
+      <div class="button-row">
+        <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
+        <button type="button" class="btn" id="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="wrap site-footer">
+    <p class="muted">Built with vanilla JavaScript, Netlify Functions and Netlify Blobs.</p>
+  </footer>
+</body>
+</html>
